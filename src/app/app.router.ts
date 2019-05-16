@@ -9,9 +9,6 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent
     },
-    { 
-        path: 'clientes',
-        loadChildren: 'app/clientes/clientes.module#ClientesModule'
-    }
+
 ];
 export const RoutingModule = RouterModule.forRoot(routes);
