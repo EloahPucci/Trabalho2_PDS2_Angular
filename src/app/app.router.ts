@@ -9,6 +9,10 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent
     },
+    {
+        path: 'filmes',
+        loadChildren: 'app/filmes/filmes.module#FilmesModule'
+    }
 
 ];
 export const RoutingModule = RouterModule.forRoot(routes);
