@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Filme } from '../filme';
+import { FilmesService } from '../filmes.service';
 
 @Component({
   selector: 'app-filme-list',
@@ -8,30 +9,37 @@ import { Filme } from '../filme';
 })
 export class FilmeListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private filmeService: FilmesService) { }
 
   filmes: Filme[] = [];
+  criterio: String;
 
   ngOnInit() {
-    this.filmes = [{
-      'codigo': 1,
-      'nome': 'Harry Potter e a Pedra Filosofal',
-      'genero': 'Aventura',
-      'anoLancamento': '2001'
-    },
-    {
-      'codigo': 2,
-      'nome': 'Vingadores - End Game',
-      'genero': 'Aventura',
-      'anoLancamento': '2019'
-    },
-    {
-      'codigo': 3,
-      'nome': 'Abracadabra',
-      'genero': 'Fantasia/Terror',
-      'anoLancamento': '1993'
-    }
-  ];
+
+    this.filmeService.getAll()
+    .subscribe(data => this.filmes = data, err => {
+      alert('Aconteceu um erro!');
+    });
+
+  //   this.filmes = [{
+  //     'codigo': 1,
+  //     'nome': 'Harry Potter e a Pedra Filosofal',
+  //     'genero': 'Aventura',
+  //     'anoLancamento': '2001'
+  //   },
+  //   {
+  //     'codigo': 2,
+  //     'nome': 'Vingadores - End Game',
+  //     'genero': 'Aventura',
+  //     'anoLancamento': '2019'
+  //   },
+  //   {
+  //     'codigo': 3,
+  //     'nome': 'Abracadabra',
+  //     'genero': 'Fantasia/Terror',
+  //     'anoLancamento': '1993'
+  //   }
+  // ];
   }
 
 }
