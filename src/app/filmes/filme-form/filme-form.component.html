@@ -1,9 +1,6 @@
-<button type="button" (click)="novoFilme()" class="btn btn-info">Novo</button>
-<button type="button" (click)="salvarFilme()" class="btn btn-success">Salvar</button>
-<button type="button" (click)="excluirFilme()" class="btn btn-danger">Excluir</button>
-<button type="button" (click)="pesquisarFilme()" class="btn btn-warning">Pesquisar</button>
+<br/>
 
-<form>
+<form #cadastro="ngForm" (ngSubmit)="salvarFilme()">
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="txtCodigo">Código:</label>
@@ -11,17 +8,25 @@
     </div>
     <div class="form-group col-md-10">
       <label for="txtNomeFilme">Nome do filme:</label>
-      <input type="text" [(ngModel)]="filme.nome" name="txtNomeFilme" class="form-control" id="txtNomeFilme" placeholder="Digite o nome do filme">
+      <input type="text" [(ngModel)]="filme.nome" #txtNomeFilme="ngModel" name="txtNomeFilme" minlength="5"
+        class="form-control" id="txtNomeFilme" placeholder="Digite o nome do filme">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="txtGenero">Gênero:</label>
-      <input type="text" [(ngModel)]="filme.genero" name="txtGenero" class="form-control" id="txtGenero" placeholder="Digite o gênero do filme">
+      <input type="text" [(ngModel)]="filme.genero" #txtGenero="ngModel" name="txtGenero" minlength="5"
+        class="form-control" id="txtGenero" placeholder="Digite o gênero do filme">
     </div>
     <div class="form-group col-md-2">
       <label for="txtAnoLancamento">Ano de lançamento:</label>
-      <input type="text" [(ngModel)]="filme.anoLancamento" name="txtAnoLancamento" class="form-control" id="txtAnoLancamento" placeholder="Digite um ano">
+      <input type="text" [(ngModel)]="filme.anoLancamento" #txtAnoLancamento="ngModel" name="txtAnoLancamento"
+        minlength="1" maxlength="4" class="form-control" id="txtAnoLancamento" placeholder="Digite um ano">
     </div>
+  </div>
+  <div class="container">
+    <button class="btn btn-success" type="submit" [disabled]="cadastro.form.invalid">Enviar</button>
+    <button class="btn btn-danger" type="button" [hidden]="isNew" (click)="excluir()">Excluir</button>
+    <button class="btn btn-warning" type="button" (click)="cancelar()">Cancelar</button>
   </div>
 </form>

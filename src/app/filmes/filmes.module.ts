@@ -5,12 +5,13 @@ import { filmesRouting } from './filmes.routing';
 import { FormsModule } from '@angular/forms';
 import { FilmesService } from './filmes.service';
 import { FilmeFormComponent } from './filme-form/filme-form.component';
+import { FilmeCrudComponent } from './filme-crud/filme-crud.component';
 
 @NgModule({
   imports: [
     CommonModule, filmesRouting, FormsModule
   ],
-  declarations: [FilmeListComponent, FilmeFormComponent],
+  declarations: [FilmeListComponent, FilmeFormComponent, FilmeCrudComponent],
   providers: [FilmesService]
 })
 export class FilmesModule { }

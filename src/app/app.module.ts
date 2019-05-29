@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { RoutingModule } from './app.router';
+import { FilmeCrudComponent } from './filme-crud/filme-crud.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    FilmeCrudComponent
   ],
   imports: [
     BrowserModule,

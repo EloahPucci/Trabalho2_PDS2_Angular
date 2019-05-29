@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FilmesService } from '../filmes.service';
 import { Filme } from '../filme';
 
@@ -17,6 +17,7 @@ export class FilmeFormComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private filmeService: FilmesService) { }
 
   ngOnInit() {
@@ -47,6 +48,7 @@ export class FilmeFormComponent implements OnInit {
       result = this.filmeService.update(this.filme);
     }
     this.novo();
+    this.voltar();
     result.subscribe(data => alert('Sucesso ' + data),
       err => {
         alert("An error occurred. " + err);
@@ -60,10 +62,20 @@ export class FilmeFormComponent implements OnInit {
       if (confirm("Você realmente quer excluir o filme " + this.filme.nome + "?"))
         this.filmeService.remove(this.filme.codigo)
           .subscribe(
-            data => this.novo,
+            data => alert('Filme removido ' + data),
             err => {
               alert("Filme não removido.");
             });
+      this.novo();
+      this.voltar();
     }
+  }
+
+  cancelar() {
+    this.voltar();
+  }
+
+  voltar() {
+    this.router.navigate(['/filmes']);
   }
 }

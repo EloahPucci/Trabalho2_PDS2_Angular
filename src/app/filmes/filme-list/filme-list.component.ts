@@ -17,9 +17,14 @@ export class FilmeListComponent implements OnInit {
   ngOnInit() {
 
     this.filmeService.getAll()
-    .subscribe(data => this.filmes = data, err => {
-      alert('Aconteceu um erro!');
-    });
+    .subscribe(data => this.filmes = data,
+      err => alert('Aconteceu um erro ' + err)
+    );
+    this.filmeService.filmesChanged.subscribe(
+      (observable: any) => observable.subscribe(
+        data => this.filmes = data
+      )
+    );
 
   //   this.filmes = [{
   //     'codigo': 1,
@@ -41,5 +46,4 @@ export class FilmeListComponent implements OnInit {
   //   }
   // ];
   }
-
 }
