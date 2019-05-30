@@ -12,6 +12,14 @@ const routes: Routes = [
     {
         path: 'filmes',
         loadChildren: 'app/filmes/filmes.module#FilmesModule'
+    },
+    {
+        path: 'artistas',
+        loadChildren: 'app/artistas/artistas.module#ArtistasModule'
+    },
+    {
+        path: 'trilhas',
+        loadChildren: 'app/trilhas-sonoras/trilhas-sonoras.module#TrilhasSonorasModule'
     }
 
 ];
