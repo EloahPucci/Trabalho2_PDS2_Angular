@@ -4,4 +4,5 @@ export class Filme {
     nome: string;
     genero: string;
     anoLancamento: string;
+    
 }
