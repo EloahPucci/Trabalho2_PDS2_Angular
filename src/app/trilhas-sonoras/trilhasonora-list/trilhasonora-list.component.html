@@ -6,16 +6,17 @@
       <tr>
           <th>Código</th>
           <th>Nome da Música</th>
-          <th>Filmes</th>
+          <th>Artista Intérprete</th>
+          <th>Filme</th>
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let trilhasonoraTabela of trilhassonoras | filter: searchText">
+      <tr *ngFor="let trilhasonoraTabela of trilhas_sonoras">
         <a [routerLink]="trilhasonoraTabela.codigo">
           <td>{{trilhasonoraTabela.codigo}}</td> </a>
           <td>{{trilhasonoraTabela.nomeMusica}}</td>
-          <td>{{trilhasonoraTabela.filmes}}</td>
+          <td>{{trilhasonoraTabela.artistaInterprete}}</td>
+          <td>{{trilhasonoraTabela.filme}}</td>
       </tr>
   </tbody>
 </table>
-<span [hidden]="(trilhassonoras | filter: searchText).length != 0">Infelizmente não temos o que você está procurando.</span>

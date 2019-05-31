@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrilhasonoraListComponent } from './trilhasonora-list/trilhasonora-list.component';
+import { trilhassonorasRouting } from './trilhassonoras.routing';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, trilhassonorasRouting, FormsModule
   ],
   declarations: [TrilhasonoraListComponent]
 })

@@ -2,6 +2,7 @@ export class TrilhaSonora {
 
     codigo: number;
     nomeMusica: string;
-    filmes: string;
+    artistaInterprete: string;
+    filme: string;
     
 }
