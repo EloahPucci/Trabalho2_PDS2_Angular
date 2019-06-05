@@ -1,0 +1,28 @@
+<button type="button" (click)="novo()" class="btn btn-primary">Novo</button>
+<button type="button" (click)="salvar()" class="btn btn-primary">Salvar</button>
+<button type="button" (click)="excluir()" class="btn btn-primary">Excluir</button>
+<button type="button" (click)="pesquisar()" class="btn btn-primary">Pesquisar</button>
+
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="codigoTrilha">Código:</label>
+      <input type="text" [(ngModel)]="trilhasonora.codigo" name="txtCodigo" class="form-control" id="codigoTrilha" placeholder="Código" disabled>
+    </div>
+    <div class="form-group col-md-9">
+      <label for="nomeTrilha">Nome da música:</label>
+      <input type="text" [(ngModel)]="trilhasonora.nomeMusica" name="txtNomeMusica" class="form-control" id="nomeTrilha" placeholder="Digite o nome da música">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="artistaInterprete">Artista Intéprete:</label>
+      <input type="text" [(ngModel)]="trilhasonora.artistaInterprete" name="txtArtistaInterprete" class="form-control" id="artistaInterprete" placeholder="Digite o artista intérprete">
+    </div>
+    <div class="form-group col-md-9">
+      <label for="filmeTrilha">Filme:</label>
+      <input type="text" [(ngModel)]="trilhasonora.filme" name="txtFilme" class="form-control" id="filmeTrilha" placeholder="Digite o filme que contém esta música">
+    </div>
+  </div>  
+</form>
