@@ -56,7 +56,7 @@ export class TrilhasonoraFormComponent implements OnInit {
 
   excluir() {
     if (this.trilha.codigo == null) {
-      alert("Selecione algum cliente");
+      alert("Selecione alguma trilha sonora");
     } else {
       if(confirm("Você realmente quer excluir a trilha sonora " + this.trilha.nomeMusica + "?"))
       this.trilhaService.remove(this.trilha.codigo)

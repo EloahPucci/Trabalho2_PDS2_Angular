@@ -5,24 +5,24 @@
 
 <form>
   <div class="form-row">
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-2">
       <label for="codigoTrilha">Código:</label>
-      <input type="text" [(ngModel)]="trilhasonora.codigo" name="txtCodigo" class="form-control" id="codigoTrilha" placeholder="Código" disabled>
+      <input type="text" [(ngModel)]="trilha.codigo" name="txtCodigo" class="form-control" id="codigoTrilha" placeholder="Código" disabled>
     </div>
-    <div class="form-group col-md-9">
+    <div class="form-group col-md-10">
       <label for="nomeTrilha">Nome da música:</label>
-      <input type="text" [(ngModel)]="trilhasonora.nomeMusica" name="txtNomeMusica" class="form-control" id="nomeTrilha" placeholder="Digite o nome da música">
+      <input type="text" [(ngModel)]="trilha.nomeMusica" name="txtNomeMusica" class="form-control" id="nomeTrilha" placeholder="Digite o nome da música">
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="artistaInterprete">Artista Intéprete:</label>
-      <input type="text" [(ngModel)]="trilhasonora.artistaInterprete" name="txtArtistaInterprete" class="form-control" id="artistaInterprete" placeholder="Digite o artista intérprete">
+      <input type="text" [(ngModel)]="trilha.artistaInterprete" name="txtArtistaInterprete" class="form-control" id="artistaInterprete" placeholder="Digite o artista intérprete">
     </div>
     <div class="form-group col-md-9">
       <label for="filmeTrilha">Filme:</label>
-      <input type="text" [(ngModel)]="trilhasonora.filme" name="txtFilme" class="form-control" id="filmeTrilha" placeholder="Digite o filme que contém esta música">
+      <input type="text" [(ngModel)]="trilha.filme" name="txtFilme" class="form-control" id="filmeTrilha" placeholder="Digite o filme que contém esta música">
     </div>
   </div>  
 </form>
