@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Artista } from '../artista';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistasService } from '../artistas.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class ArtistaFormComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private artistaService: ArtistasService) { }
 
   ngOnInit() {
@@ -48,6 +49,7 @@ export class ArtistaFormComponent implements OnInit {
       result = this.artistaService.update(this.artista);
     }
     this.novo();
+    this.voltar();
     result.subscribe(data => alert('sucesso ' + data),
     err => {
       alert("An error occurred. " + err);
@@ -61,10 +63,20 @@ export class ArtistaFormComponent implements OnInit {
       if(confirm("Você realmente quer excluir o artista " + this.artista.nomeArtista + "?"))
       this.artistaService.remove(this.artista.codigo)
       .subscribe(
-        data => this.novo,
+        data => alert('Artista removido ' + data),
         err => {
-          alert("Trilha Sonora não foi removida.")
+          alert("Artista não foi removido.")
         });
+        this.novo();
+        this.voltar();
     }
+  }
+
+  cancelar() {
+    this.voltar();
+  }
+
+  voltar() {
+    this.router.navigate(['/artistas']);
   }
 }

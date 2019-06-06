@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TrilhasSonorasService } from '../trilhas-sonoras.service';
 import { TrilhaSonora } from '../trilha-sonora';
 
@@ -9,6 +9,7 @@ import { TrilhaSonora } from '../trilha-sonora';
   templateUrl: './trilhasonora-form.component.html',
   styleUrls: ['./trilhasonora-form.component.css']
 })
+
 export class TrilhasonoraFormComponent implements OnInit {
 
   private trilhaIndex: number;
@@ -17,6 +18,7 @@ export class TrilhasonoraFormComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private trilhaService: TrilhasSonorasService) { }
 
   ngOnInit() {
@@ -48,6 +50,7 @@ export class TrilhasonoraFormComponent implements OnInit {
       result = this.trilhaService.update(this.trilha);
     }
     this.novo();
+    this.voltar();
     result.subscribe(data => alert('sucesso ' + data),
     err => {
       alert("An error occurred. " + err);
@@ -61,10 +64,20 @@ export class TrilhasonoraFormComponent implements OnInit {
       if(confirm("Você realmente quer excluir a trilha sonora " + this.trilha.nomeMusica + "?"))
       this.trilhaService.remove(this.trilha.codigo)
       .subscribe(
-        data => this.novo,
+        data => alert('Trilha Sonora removido ' + data),
         err => {
           alert("Trilha Sonora não foi removida.")
         });
+        this.novo();
+        this.voltar();
     }
+  }
+
+  cancelar() {
+    this.voltar();
+  }
+
+  voltar() {
+    this.router.navigate(['/trilhas']);
   }
 }
