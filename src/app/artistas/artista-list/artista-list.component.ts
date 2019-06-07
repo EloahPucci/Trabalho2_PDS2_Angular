@@ -18,9 +18,15 @@ export class ArtistaListComponent implements OnInit {
   ngOnInit() {
 
     this.artistaService.getAll()
-    .subscribe(data => this.artistas = data, err => {
-      alert('Aconteceu um erro!');
-    });
+    .subscribe(data => this.artistas = data,
+      err => alert('Aconteceu um erro! ' + err)
+    );
+
+    this.artistaService.artistasChanged.subscribe(
+      (observable: any) => observable.subscribe(
+        data => this.artistas = data
+      )
+    );
 
     // this.artistas = [{
     //       'codigo': 1,

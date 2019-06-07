@@ -11,7 +11,7 @@
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let filmeTabela of filmes | filter: searchText">
+      <tr *ngFor="let filmeTabela of filmes | filterFilme: searchText">
         <a [routerLink]="filmeTabela.codigo">
           <td>{{filmeTabela.codigo}}</td> </a>
           <td>{{filmeTabela.nome}}</td>
@@ -20,4 +20,4 @@
       </tr>
   </tbody>
 </table>
-<span [hidden]="(filmes | filter: searchText).length != 0">Infelizmente não temos o que você está procurando.</span>
+<span [hidden]="(filmes | filterFilme: searchText).length != 0">Infelizmente não temos o que você está procurando.</span>
