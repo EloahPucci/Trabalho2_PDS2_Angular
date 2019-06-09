@@ -16,9 +16,15 @@ export class TrilhasonoraListComponent implements OnInit {
   ngOnInit() {
 
     this.trilhaSonoraService.getAll()
-    .subscribe(data => this.trilhas_sonoras = data, err => {
-      alert('Aconteceu um erro!');
-    });
+    .subscribe(data => this.trilhas_sonoras = data,
+      err => alert('Aconteceu um erro (TRILHASONORA-LIST.COMPONENT.TS)! ' + err)
+    );
+
+    this.trilhaSonoraService.trilhasChanged.subscribe(
+      (observable: any) => observable.subscribe(
+        data => this.trilhas_sonoras = data
+      )
+    );
 
   //   this.trilhas_sonoras = [{
   //     'codigo': 1,
